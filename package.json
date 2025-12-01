@@ -11,13 +11,14 @@
         "./*": "./*"
     },
     "main": "index.js",
+    "types": "dist/types/index-node.d.ts",
     "scripts": {
         "test": "mocha",
         "test:watch": "mocha --watch",
         "build:browserify": "browserify lib/entry.js -o dist/ro-crate-dynamic.js",
         "build:dev": "webpack ./lib/entry.js --output-filename ro-crate-dynamic.js --mode development --no-optimization-minimize",
         "build:prod": "webpack ./lib/entry.js --output-filename ro-crate-dynamic.min.js --mode production",
-        "build": "npm run build:dev && npm run build:prod",
+        "build": "tsc && npm run build:dev && npm run build:prod",
         "start": "http-server ./dist"
     },
     "bin": {
